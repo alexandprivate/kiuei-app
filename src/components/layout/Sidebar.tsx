@@ -62,11 +62,13 @@ const Plan: React.FC = () => {
 
 export const Sidebar = () => {
   return (
-    <div className="min-h-screen border-r border-zinc-900 w-[300px] p-3 gap-6 flex flex-col">
-      <Brand />
-      <User />
-      <Plan />
-      <Navigation />
+    <div className="min-h-screen border-r border-zinc-900 w-[300px] p-3 ">
+      <div className="gap-6 flex flex-col sticky top-3">
+        <Brand />
+        <User />
+        <Plan />
+        <Navigation />
+      </div>
     </div>
   );
 };
