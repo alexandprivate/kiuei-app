@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-stone-300
+  }
+
+  .collapsible {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .collapsible.open {
+    opacity: 1;
+    grid-template-rows: 1fr;
+  }
+
+  .collapsible-inner {
+    overflow: hidden;
+  }
+}
