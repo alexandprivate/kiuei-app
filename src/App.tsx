@@ -13,6 +13,7 @@ import { Settings } from './pages/settings/Settings';
 import { Suites } from './pages/suites/Suites';
 import { Suite } from './pages/suite/Suite';
 import { Organization } from './pages/organization/Organization';
+import { SignIn } from './pages/signin/SignIn';
 
 const ErrorPage = () => {
   return (
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
       <Route index path="/suite/:suiteId" element={<Suite />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/organization" element={<Organization />} />
+      <Route path="/sign-in" element={<SignIn />} />
     </Route>
   )
 );
