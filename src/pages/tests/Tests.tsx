@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Intro } from '../../components/intro/Intro';
+import { PageHeader } from '../../components/pageHeader/PageHeader';
 import { TestCard } from './components/TestCard';
 
 const data = [
@@ -27,7 +27,7 @@ export const Tests = () => {
   const actions = [{ name: 'Add Test', onClick: () => {} }];
   return (
     <>
-      <Intro title="Tests" actions={actions} />
+      <PageHeader title="Tests" actions={actions} />
 
       <div className="flex flex-col mt-12">
         {data.map((test) => (

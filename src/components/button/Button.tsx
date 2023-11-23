@@ -1,5 +1,6 @@
 import React from 'react';
-import { cn } from '../../utils/index';
+import { cn } from '../../utils';
+import { GoPlus as PlusIcon } from 'react-icons/go';
 
 const FlavorsMap = {
   primary: 'bg-zinc-200 text-zinc-900 hover:bg-zinc-200/80',
@@ -11,23 +12,37 @@ const SizeMap = {
   md: 'h-9 px-4'
 } as const;
 
-export type ButtonProps = React.ComponentPropsWithRef<'button'> & {
+const IconMap = {
+  plus: <PlusIcon />
+} as const;
+
+export type ButtonProps = React.ComponentProps<'button'> & {
   children: React.ReactNode;
   flavor?: keyof typeof FlavorsMap;
-  size?: 'sm' | 'md';
+  size?: keyof typeof SizeMap;
+  className?: string;
+  icon?: keyof typeof IconMap;
 };
 
 export const Button: React.FC<ButtonProps> = ({
   children,
   flavor = 'primary',
   size = 'md',
+  className,
+  icon = null,
   ...restProps
 }) => {
   return (
     <button
       {...restProps}
-      className={cn('rounded transition-all', FlavorsMap[flavor], SizeMap[size])}>
-      {children}
+      className={cn(
+        'rounded transition-all inline-flex items-center gap-2',
+        FlavorsMap[flavor],
+        SizeMap[size],
+        className
+      )}>
+      {icon !== null && <span>{IconMap[icon]}</span>}
+      <span>{children}</span>
     </button>
   );
 };

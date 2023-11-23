@@ -8,7 +8,9 @@ const CommandsHeader = () => {
         <span className="text-xl font-medium">Commands</span>
         <NumberBadge value={0} />
       </div>
-      <Button flavor="secondary">Add Command</Button>
+      <Button flavor="secondary" icon="plus">
+        Add Command
+      </Button>
     </div>
   );
 };

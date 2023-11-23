@@ -10,6 +10,9 @@ import { Tests } from './pages/tests/Tests';
 import { Test } from './pages/test/Test';
 import { Layout } from './components/layout/Layout';
 import { Settings } from './pages/settings/Settings';
+import { Suites } from './pages/suites/Suites';
+import { Suite } from './pages/suite/Suite';
+import { Organization } from './pages/organization/Organization';
 
 const ErrorPage = () => {
   return (
@@ -23,12 +26,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
       <Route index element={<Home />} />
-      <Route index path="/tests" element={<Tests />} />
-      <Route index path="/test/:testId" element={<Test />} />
-      {/* <Route index path="/suites" element={<Test />} />
-      <Route index path="/suites/:suiteId" element={<Test />} /> */}
-      <Route index path="/settings" element={<Settings />} />
-      <Route index path="/organization" element={<Settings />} />
+      <Route path="/tests" element={<Tests />} />
+      <Route path="/test/:testId" element={<Test />} />
+      <Route path="/suites" element={<Suites />} />
+      <Route index path="/suite/:suiteId" element={<Suite />} />
+      <Route path="/settings" element={<Settings />} />
+      <Route path="/organization" element={<Organization />} />
     </Route>
   )
 );

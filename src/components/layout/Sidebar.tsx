@@ -1,23 +1,32 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { CiUser } from 'react-icons/ci';
+import { BsArrowUpRightSquare } from 'react-icons/bs';
 
 const menu = [
   { name: 'Home', path: '/' },
   { name: 'Tests', path: '/tests' },
   { name: 'Suites', path: '/suites' },
   { name: 'Settings', path: '/settings' },
-  { name: 'Organization', path: '/settings' }
+  { name: 'Organization', path: '/organization' }
 ];
 
 const Navigation: React.FC = () => {
   return (
     <nav>
-      <ul className="flex flex-col justify-between">
+      <ul className="flex flex-col justify-between gap-1">
         {menu.map((item) => (
           <li key={item.name}>
-            <Link to={item.path} className="p-2 block hover:bg-zinc-900 rounded">
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? 'pending'
+                  : isActive
+                  ? 'p-2 block bg-zinc-900 rounded'
+                  : 'p-2 block hover:bg-zinc-900 rounded'
+              }
+              to={item.path}>
               {item.name}
-            </Link>
+            </NavLink>
           </li>
         ))}
       </ul>
@@ -45,7 +54,10 @@ const User: React.FC = () => {
 const Plan: React.FC = () => {
   return (
     <div className="flex flex-col gap-3 p-2">
-      <span>Free Plan</span>
+      <div className="flex items-center gap-2">
+        <span>Free Plan</span>
+        <BsArrowUpRightSquare size="12" />
+      </div>
       <div className="flex flex-col gap-2 w-full ite">
         <small>
           <span className="text-zinc-400">Commands</span> 100/100
@@ -63,7 +75,7 @@ const Plan: React.FC = () => {
 export const Sidebar = () => {
   return (
     <div className="min-h-screen border-r border-zinc-900 w-[300px] p-3 ">
-      <div className="gap-6 flex flex-col sticky top-3">
+      <div className="gap-8 flex flex-col sticky top-3">
         <Brand />
         <User />
         <Plan />
