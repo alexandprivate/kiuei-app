@@ -13,7 +13,7 @@ export type PageHeaderProps = {
 
 export const PageHeader: React.FC<PageHeaderProps> = ({ title, actions = [] }) => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between mb-14">
       <h2 className="font-medium text-3xl">{title}</h2>
       <div className="flex items-center gap-2">
         {actions?.map((action, key) => (

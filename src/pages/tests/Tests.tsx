@@ -29,7 +29,7 @@ export const Tests = () => {
     <>
       <PageHeader title="Tests" actions={actions} />
 
-      <div className="flex flex-col mt-12">
+      <div className="flex flex-col">
         {data.map((test) => (
           <Link to={`/test/${test.id}`}>
             <TestCard title={test.title} url={test.url} status={test.status} />
