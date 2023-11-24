@@ -12,9 +12,12 @@ const StatusMap = {
 
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
   return (
-    <small
-      className={cn('h-7 items-center px-2 rounded inline-flex capitalize', StatusMap[status])}>
+    <span
+      className={cn(
+        'h-7 text-xs items-center px-2 rounded inline-flex capitalize',
+        StatusMap[status]
+      )}>
       {status}
-    </small>
+    </span>
   );
 };

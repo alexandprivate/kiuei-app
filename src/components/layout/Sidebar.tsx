@@ -51,6 +51,17 @@ const User: React.FC = () => {
   );
 };
 
+const PlanItem: React.FC<{ title: string; count: string }> = ({ title, count }) => {
+  return (
+    <>
+      <span className="text-xs">
+        {count} <span className="text-zinc-400 capitalize">{title}</span>
+      </span>
+      <div className="h-2 bg-purple-800 w-full rounded-full" />
+    </>
+  );
+};
+
 const Plan: React.FC = () => {
   return (
     <div className="flex flex-col gap-3 p-2">
@@ -59,14 +70,8 @@ const Plan: React.FC = () => {
         <BsArrowUpRightSquare size="12" />
       </div>
       <div className="flex flex-col gap-2 w-full ite">
-        <small>
-          <span className="text-zinc-400">Commands</span> 100/100
-        </small>
-        <div className="h-2 bg-green-600 w-full rounded-full"></div>
-        <small>
-          <span className="text-zinc-400">Runs</span> 100/100
-        </small>
-        <div className="h-2 bg-green-600 w-full rounded-full"></div>
+        <PlanItem title="commands" count="100/100" />
+        <PlanItem title="runs" count="100/100" />
       </div>
     </div>
   );

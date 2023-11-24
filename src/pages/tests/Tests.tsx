@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PageHeader } from '../../components/pageHeader/PageHeader';
+import { PageHeader, PageHeaderProps } from '../../components/pageHeader/PageHeader';
 import { TestCard } from './components/TestCard';
 
 const data = [
@@ -24,7 +24,9 @@ const data = [
 ] as const;
 
 export const Tests = () => {
-  const actions = [{ name: 'Add Test', onClick: () => {} }];
+  const actions = [
+    { name: 'Add Test', onClick: () => {}, icon: 'plus' }
+  ] as PageHeaderProps['actions'];
   return (
     <>
       <PageHeader title="Tests" actions={actions} />

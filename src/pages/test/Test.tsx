@@ -15,16 +15,12 @@ export const Test = () => {
 
   // fetch for id
   return (
-    <div>
+    <>
       <PageHeader title="My Portfolio home page" actions={actions} />
 
       <Highlights>
         <Highlights.Item title="Status">
           <StatusBadge status="passed" />
-        </Highlights.Item>
-        <Highlights.Item title="Created">
-          <CiTimer />
-          <span>3 months ago</span>
         </Highlights.Item>
         <Highlights.Item title="Last Run">
           <CiTimer />
@@ -34,16 +30,21 @@ export const Test = () => {
           <TfiWorld />
           <span>alexandprivate.com</span>
         </Highlights.Item>
-        <Highlights.Item title="Scheduled">
+        <Highlights.Item title="Created">
           <CiTimer />
-          <span>Daily at 11:00 am</span>
+          <span>3 months ago</span>
         </Highlights.Item>
         <Highlights.Item title="Last Update">
           <CiTimer />
           <span>3 months ago</span>
         </Highlights.Item>
+        <Highlights.Item title="Scheduled run">
+          <CiTimer />
+          <span>Daily at 11:00 am</span>
+        </Highlights.Item>
       </Highlights>
+
       <Commands />
-    </div>
+    </>
   );
 };
