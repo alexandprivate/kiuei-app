@@ -28,9 +28,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
       <Route index element={<Home />} />
       <Route path="/tests" element={<Tests />} />
-      <Route path="/test/:testId" element={<Test />} />
+      <Route path="/tests/:testId" element={<Test />} />
       <Route path="/suites" element={<Suites />} />
-      <Route path="/suite/:suiteId" element={<Suite />} />
+      <Route path="/suites/:suiteId" element={<Suite />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/organization" element={<Organization />} />
       <Route path="/plan" element={<Organization />} />

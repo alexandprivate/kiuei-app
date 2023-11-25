@@ -20,9 +20,7 @@ export const TestCard: React.FC<TestCardProps> = ({ status, title, url }) => {
         </div>
       </div>
       <div className="flex flex-1 justify-end text-zinc-500 underline underline-offset-4 decoration-dashed">
-        <a target="_blank" href={url}>
-          {url.replace('https://', '')}
-        </a>
+        <span>{url.replace('https://', '')}</span>
       </div>
     </div>
   );

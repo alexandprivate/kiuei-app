@@ -33,7 +33,7 @@ export const Tests = () => {
 
       <div className="flex flex-col">
         {data.map((test) => (
-          <Link to={`/test/${test.id}`}>
+          <Link to={`/tests/${test.id}`}>
             <TestCard title={test.title} url={test.url} status={test.status} />
           </Link>
         ))}

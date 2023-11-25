@@ -9,7 +9,7 @@ export const Layout = () => {
   const renderLayoutElements = pathname !== '/sign-in';
 
   return (
-    <div className="flex">
+    <div className="flex relative">
       {renderLayoutElements && <Sidebar />}
       <div className="w-full flex flex-col gap-8 ">
         {renderLayoutElements && <TopBar />}

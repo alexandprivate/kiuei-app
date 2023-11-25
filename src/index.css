@@ -1,12 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Poppins:wght@400;800&family=Unbounded:wght@700&display=swap');
 
 @layer base {
   body {
-    @apply bg-zinc-950 text-stone-300
+    @apply bg-zinc-950 text-stone-300;
+    font-family: 'Manrope', sans-serif;
+  }
+
+  *::selection {
+    @apply bg-purple-400 text-zinc-950;
   }
 
   .collapsible {
