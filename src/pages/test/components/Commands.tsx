@@ -1,5 +1,4 @@
-import { NumberBadge } from '../../../components/numberBadge/NumberBadge';
-import { Button } from '../../../components/button/Button';
+import { ListHeader } from '../../../components/listHeader/ListHeader';
 import { DndContext } from '@dnd-kit/core';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
@@ -7,20 +6,6 @@ import { MdDragIndicator as DragIcon } from 'react-icons/md';
 import { IoTrashOutline as TrashIcon } from 'react-icons/io5';
 import { IoDuplicateOutline as DuplicateIcon } from 'react-icons/io5';
 import { ListWrapper } from '../../../components/listWrapper/ListWrapper';
-
-const CommandsHeader = () => {
-  return (
-    <div className="flex items-center justify-between bg-zinc-950/80 sticky top-0 py-5 backdrop-blur-sm">
-      <div className="flex items-center gap-2">
-        <span className="text-xl font-medium">Commands</span>
-        <NumberBadge value={0} />
-      </div>
-      <Button flavor="secondary" icon="plus">
-        Add Command
-      </Button>
-    </div>
-  );
-};
 
 const CommandCard = () => {
   return (
@@ -64,7 +49,11 @@ export const Commands = () => {
   };
   return (
     <ListWrapper>
-      <CommandsHeader />
+      <ListHeader
+        title="Commands"
+        badgeValue={0}
+        action={{ label: 'Add Command', onClick: () => null }}
+      />
 
       <div className="flex flex-col gap-2 mt-3">
         <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={handleDragEnd}>

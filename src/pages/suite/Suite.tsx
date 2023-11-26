@@ -1,25 +1,10 @@
 import { BsThreeDots } from 'react-icons/bs';
 import { PageHeader, PageHeaderProps } from '../../components/pageHeader/PageHeader';
-import { NumberBadge } from '../../components/numberBadge/NumberBadge';
-import { Button } from '../../components/button/Button';
+import { ListHeader } from '../../components/listHeader/ListHeader';
 import { Highlights } from '../../components/highlights/Highlights';
 import { StatusBadge } from '../../components/statusBadge/StatusBadge';
 import { CiTimer } from 'react-icons/ci';
 import { ListWrapper } from '../../components/listWrapper/ListWrapper';
-
-const TestsListHeader = () => {
-  return (
-    <div className="flex items-center justify-between bg-zinc-950/80 sticky top-0 py-5 backdrop-blur-sm">
-      <div className="flex items-center gap-2">
-        <span className="text-xl font-medium">Test</span>
-        <NumberBadge value={0} />
-      </div>
-      <Button flavor="secondary" icon="plus">
-        Add Test
-      </Button>
-    </div>
-  );
-};
 
 export const Suite = () => {
   const actions = [
@@ -54,7 +39,11 @@ export const Suite = () => {
         </Highlights.Item>
       </Highlights>
       <ListWrapper>
-        <TestsListHeader></TestsListHeader>
+        <ListHeader
+          title="Test"
+          badgeValue={0}
+          action={{ label: 'Add Test', onClick: () => null }}
+        />
       </ListWrapper>
     </>
   );
