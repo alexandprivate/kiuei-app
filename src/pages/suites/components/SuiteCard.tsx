@@ -6,24 +6,19 @@ type SuiteCardProps = StatusBadgeProps & {
   title: string;
 };
 
-export const SuiteCard: React.FC<SuiteCardProps> = ({ status, title, url }) => {
+export const SuiteCard: React.FC<SuiteCardProps> = ({ status, title }) => {
   return (
     <div className="flex gap-4 border-b border-zinc-900 py-4">
       <div className="w-1/3">{title}</div>
-      <div className="w-1/3">
+      <div className="w-1/3 flex justify-center">
         <StatusBadge status={status} />
       </div>
       <div className="w-1/3">
-        <div className="flex items-center gap-2">
-          <span className="text-zinc-500">Tests</span>
+        <div className="flex items-center gap-2 justify-end">
+          <span>Tests</span>
           <NumberBadge value={12} />
         </div>
       </div>
-      {/* <div className="flex flex-1 justify-end text-zinc-500 underline underline-offset-4 decoration-dashed">
-        <a target="_blank" href={url}>
-          {url.replace('https://', '')}
-        </a>
-      </div> */}
     </div>
   );
 };

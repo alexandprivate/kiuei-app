@@ -15,11 +15,11 @@ export const TestCard: React.FC<TestCardProps> = ({ status, title, url }) => {
       </div>
       <div className="w-1/3">
         <div className="flex items-center gap-2">
-          <span className="text-zinc-500">Commands</span>
+          <span>Commands</span>
           <NumberBadge value={12} />
         </div>
       </div>
-      <div className="flex flex-1 justify-end text-zinc-500 underline underline-offset-4 decoration-dashed">
+      <div className="flex flex-1 justify-end underline underline-offset-4 decoration-dashed">
         <span>{url.replace('https://', '')}</span>
       </div>
     </div>

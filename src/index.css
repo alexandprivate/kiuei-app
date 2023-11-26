@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500:600&family=Poppins:wght@400;800&family=Unbounded:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Poppins:wght@400;800&family=Unbounded:wght@700&display=swap');
+
 
 @layer base {
   body {
