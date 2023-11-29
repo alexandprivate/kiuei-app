@@ -1,10 +1,10 @@
 import { BsThreeDots } from 'react-icons/bs';
-import { PageHeader, PageHeaderProps } from '../../components/pageHeader/PageHeader';
-import { ListHeader } from '../../components/listHeader/ListHeader';
-import { Highlights } from '../../components/highlights/Highlights';
-import { StatusBadge } from '../../components/statusBadge/StatusBadge';
+import { PageHeader, PageHeaderProps } from '@/components/pageHeader/PageHeader';
+import { ListHeader } from '@/components/listHeader/ListHeader';
+import { Highlights } from '@/components/highlights/Highlights';
+import { StatusBadge } from '@/components/statusBadge/StatusBadge';
 import { CiTimer } from 'react-icons/ci';
-import { ListWrapper } from '../../components/listWrapper/ListWrapper';
+import { OutlineWrapper } from '@/components/outlineWrapper/OutlineWrapper';
 
 export const Suite = () => {
   const actions = [
@@ -38,13 +38,13 @@ export const Suite = () => {
           <span>Daily at 11:00 am</span>
         </Highlights.Item>
       </Highlights>
-      <ListWrapper>
+      <OutlineWrapper>
         <ListHeader
           title="Test"
           badgeValue={0}
           action={{ label: 'Add Test', onClick: () => null }}
         />
-      </ListWrapper>
+      </OutlineWrapper>
     </>
   );
 };

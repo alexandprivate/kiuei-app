@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { PageHeader, PageHeaderProps } from '../../components/pageHeader/PageHeader';
+import { PageHeader, PageHeaderProps } from '@/components/pageHeader/PageHeader';
 import { TestCard } from './components/TestCard';
 
 const data = [

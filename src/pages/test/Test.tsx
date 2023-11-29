@@ -1,15 +1,15 @@
-import { PageHeader, PageHeaderProps } from '../../components/pageHeader/PageHeader';
+import { PageHeader, PageHeaderProps } from '@/components/pageHeader/PageHeader';
 import { BsThreeDots } from 'react-icons/bs';
-import { Highlights } from '../../components/highlights/Highlights';
+import { Highlights } from '@/components/highlights/Highlights';
 import { Commands } from './components/Commands';
-import { StatusBadge } from '../../components/statusBadge/StatusBadge';
+import { StatusBadge } from '@/components/statusBadge/StatusBadge';
 import { CiTimer } from 'react-icons/ci';
 import { TfiWorld } from 'react-icons/tfi';
 
 export const Test = () => {
   const actions = [
-    { name: 'Run Test', onClick: () => {} },
-    { name: 'Save', onClick: () => {}, flavor: 'secondary' },
+    { name: 'Run Test', onClick: () => {}, icon: 'test' },
+    { name: 'Save', onClick: () => {}, flavor: 'secondary', icon: 'save' },
     { name: <BsThreeDots />, onClick: () => {}, flavor: 'secondary' }
   ] as PageHeaderProps['actions'];
 

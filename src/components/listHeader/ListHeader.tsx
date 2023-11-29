@@ -13,7 +13,7 @@ export const ListHeader: React.FC<{
         <span className="text-xl font-medium">{title}</span>
         <NumberBadge value={badgeValue} />
       </div>
-      <Button flavor="secondary" icon="plus" onClick={action.onClick}>
+      <Button flavor="secondary" icon={action.icon} onClick={action.onClick}>
         {action.label}
       </Button>
     </div>

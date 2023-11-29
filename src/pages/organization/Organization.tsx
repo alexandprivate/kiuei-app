@@ -1,14 +1,19 @@
-import { PageHeader, PageHeaderProps } from '../../components/pageHeader/PageHeader';
+import { OutlineWrapper } from '@/components/outlineWrapper/OutlineWrapper';
+import { PageHeader } from '@/components/pageHeader/PageHeader';
+import { ListHeader } from '@/components/listHeader/ListHeader';
 
 export const Organization = () => {
-  const actions = [
-    { name: 'Add Test', onClick: () => {}, icon: 'plus' },
-    { name: 'Add Suite', onClick: () => {}, flavor: 'secondary' }
-  ] as PageHeaderProps['actions'];
-
   return (
     <>
-      <PageHeader title="Organization" actions={actions} />
+      <PageHeader title="Organization" />
+
+      <OutlineWrapper>
+        <ListHeader
+          title="Members"
+          badgeValue={0}
+          action={{ label: 'Invite Members', onClick: () => null, icon: 'addUser' }}
+        />
+      </OutlineWrapper>
     </>
   );
 };

@@ -1,10 +1,7 @@
-import { PageHeader, PageHeaderProps } from '../../components/pageHeader/PageHeader';
+import { PageHeader, PageHeaderProps } from '@/components/pageHeader/PageHeader';
 
 export const Settings = () => {
-  const actions = [
-    { name: 'Add Test', onClick: () => {}, icon: 'plus' },
-    { name: 'Add Suite', onClick: () => {}, flavor: 'secondary' }
-  ] as PageHeaderProps['actions'];
+  const actions = [{ name: 'Save', onClick: () => {}, icon: 'save' }] as PageHeaderProps['actions'];
 
   return (
     <>

@@ -1,6 +1,9 @@
 import React from 'react';
 import { cn } from '../../utils';
 import { GoPlus as PlusIcon } from 'react-icons/go';
+import { IoSaveOutline as SaveIcon } from 'react-icons/io5';
+import { RiTestTubeLine as TestIcon } from 'react-icons/ri';
+import { LuUserPlus2 as AddUserIcon } from 'react-icons/lu';
 
 const FlavorsMap = {
   primary: 'bg-zinc-200 text-zinc-900 hover:bg-zinc-200/80',
@@ -13,7 +16,10 @@ const SizeMap = {
 } as const;
 
 const IconMap = {
-  plus: <PlusIcon />
+  plus: <PlusIcon />,
+  save: <SaveIcon />,
+  test: <TestIcon />,
+  addUser: <AddUserIcon />
 } as const;
 
 export type ButtonProps = React.ComponentProps<'button'> & {

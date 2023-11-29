@@ -1,11 +1,11 @@
-import { ListHeader } from '../../../components/listHeader/ListHeader';
+import { ListHeader } from '@/components/listHeader/ListHeader';
 import { DndContext } from '@dnd-kit/core';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { MdDragIndicator as DragIcon } from 'react-icons/md';
 import { IoTrashOutline as TrashIcon } from 'react-icons/io5';
 import { IoDuplicateOutline as DuplicateIcon } from 'react-icons/io5';
-import { ListWrapper } from '../../../components/listWrapper/ListWrapper';
+import { OutlineWrapper } from '@/components/outlineWrapper/OutlineWrapper';
 
 const CommandCard = () => {
   return (
@@ -48,7 +48,7 @@ export const Commands = () => {
     const { active, over } = event;
   };
   return (
-    <ListWrapper>
+    <OutlineWrapper>
       <ListHeader
         title="Commands"
         badgeValue={0}
@@ -64,6 +64,6 @@ export const Commands = () => {
           </SortableContext>
         </DndContext>
       </div>
-    </ListWrapper>
+    </OutlineWrapper>
   );
 };

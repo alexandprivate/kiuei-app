@@ -1,4 +1,4 @@
-import { PageHeader, PageHeaderProps } from '../../components/pageHeader/PageHeader';
+import { PageHeader, PageHeaderProps } from '@/components/pageHeader/PageHeader';
 
 export const Home = () => {
   const actions = [

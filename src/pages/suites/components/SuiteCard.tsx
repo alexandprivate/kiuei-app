@@ -1,5 +1,5 @@
-import { NumberBadge } from '../../../components/numberBadge/NumberBadge';
-import { StatusBadge, StatusBadgeProps } from '../../../components/statusBadge/StatusBadge';
+import { NumberBadge } from '@/components/numberBadge/NumberBadge';
+import { StatusBadge, StatusBadgeProps } from '@/components/statusBadge/StatusBadge';
 
 type SuiteCardProps = StatusBadgeProps & {
   url: string;

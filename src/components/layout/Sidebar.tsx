@@ -35,7 +35,7 @@ const Navigation: React.FC = () => {
 };
 
 const Brand: React.FC = () => {
-  return <h3 className="text-2xl font-medium ml-2 mb-7">Kiuei</h3>;
+  return <h3 className="text-3xl font-bold ml-2 mb-7">Kiuei</h3>;
 };
 
 const User: React.FC = () => {
