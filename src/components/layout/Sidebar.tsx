@@ -66,7 +66,7 @@ const Plan: React.FC = () => {
   return (
     <div className="flex flex-col gap-3 p-2">
       <div className="flex items-center gap-2">
-        <span>Free Plan</span>
+        <span>Lite Tester Plan</span>
         <BsArrowUpRightSquare size="12" />
       </div>
       <div className="flex flex-col gap-2 w-full ite">
