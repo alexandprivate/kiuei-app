@@ -9,7 +9,7 @@ import { OutlineWrapper } from '@/components/outlineWrapper/OutlineWrapper';
 
 const CommandCard = () => {
   return (
-    <div className="flex items-center justify-between py-2 pl-2 pr-4 rounded bg-zinc-900">
+    <div className="flex items-center justify-between py-2 pl-2 pr-4 rounded bg-zinc-800">
       <div className="flex items-center gap-2 w-full">
         <button className="px-2 self-stretch">
           <DragIcon />
@@ -33,7 +33,7 @@ const CommandCard = () => {
               <span className="text-sm text-zinc-400">Text:</span>
               <input
                 type="text"
-                className="border-b border-zinc-800 bg-transparent w-full hover:border-zinc-600 focus:outline-0 focus:border-zinc-600 transition-all"
+                className="border-b border-zinc-700 bg-transparent w-full hover:border-zinc-600 focus:outline-0 focus:border-zinc-600 transition-all"
               />
             </div>
           ))}
@@ -52,13 +52,13 @@ export const Commands = () => {
       <ListHeader
         title="Commands"
         badgeValue={0}
-        action={{ label: 'Add Command', onClick: () => null }}
+        action={{ label: 'Add Command', onClick: () => null, icon: 'plus' }}
       />
 
       <div className="flex flex-col gap-2 mt-3">
         <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={handleDragEnd}>
           <SortableContext items={[1, 2, 3, 4, 5]} strategy={verticalListSortingStrategy}>
-            {new Array(5).fill(0).map((_, index) => (
+            {new Array(12).fill(0).map((_, index) => (
               <CommandCard key={index} />
             ))}
           </SortableContext>

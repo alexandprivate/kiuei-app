@@ -8,15 +8,15 @@ type SuiteCardProps = StatusBadgeProps & {
 
 export const SuiteCard: React.FC<SuiteCardProps> = ({ status, title }) => {
   return (
-    <div className="flex gap-4 border-b border-zinc-900 py-4">
+    <div className="flex gap-4 border-b border-zinc-800 py-4">
       <div className="w-1/3">{title}</div>
-      <div className="w-1/3 flex justify-center">
+      <div className="w-1/3 flex">
         <StatusBadge status={status} />
       </div>
       <div className="w-1/3">
-        <div className="flex items-center gap-2 justify-end">
+        <div className="flex items-center gap-3 justify-end">
           <span>Tests</span>
-          <NumberBadge value={12} />
+          <NumberBadge value={120} />
         </div>
       </div>
     </div>

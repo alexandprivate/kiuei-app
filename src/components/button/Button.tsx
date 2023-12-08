@@ -6,8 +6,8 @@ import { RiTestTubeLine as TestIcon } from 'react-icons/ri';
 import { LuUserPlus2 as AddUserIcon } from 'react-icons/lu';
 
 const FlavorsMap = {
-  primary: 'bg-zinc-200 text-zinc-900 hover:bg-zinc-200/80',
-  secondary: 'bg-zinc-800/70 text-zinc-200 border border-zinc-700 hover:bg-zinc-800'
+  primary: 'bg-zinc-100 text-zinc-900 hover:bg-zinc-300',
+  secondary: 'bg-zinc-800 text-zinc-100 border border-zinc-600 hover:bg-zinc-700/80'
 } as const;
 
 const SizeMap = {

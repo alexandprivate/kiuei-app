@@ -1,9 +1,29 @@
 import { Input } from '@/components/input/Input';
 import { Button } from '@/components/button/Button';
-import { useSearchParams } from 'react-router-dom';
+import { useRef } from 'react';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
 
 export const SignIn: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const formRef = useRef<HTMLFormElement>(null);
+  const supabase = useSupabaseClient();
+
+  const onSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { email } = e.currentTarget;
+    const emailRedirectTo = import.meta.env.VITE_EMAIL_REDIRECT_URL;
+
+    const { error } = await supabase.auth.signInWithOtp({
+      email: email.value,
+      options: {
+        emailRedirectTo
+      }
+    });
+
+    if (error) {
+      console.log({ error });
+      return;
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 relative">
@@ -13,16 +33,11 @@ export const SignIn: React.FC = () => {
           <h1 className="font-bold text-5xl">kiuei</h1>
           <p className="text-lg">Let's ship some automation!</p>
         </div>
-        <form className="flex gap-4 flex-col">
-          <Input
-            placeholder="Email address"
-            value={searchParams.get('email') || ''}
-            onChange={(e) => {
-              searchParams.set('email', e.target.value);
-              setSearchParams(searchParams);
-            }}
-          />
-          <Button className="w-full justify-center block">Sign In</Button>
+        <form className="flex gap-4 flex-col" ref={formRef} onSubmit={onSignIn}>
+          <Input placeholder="Email address" type="email" required name="email" />
+          <Button type="submit" className="w-full justify-center block">
+            Sign In
+          </Button>
         </form>
       </div>
     </div>

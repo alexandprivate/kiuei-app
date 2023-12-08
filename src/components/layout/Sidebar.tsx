@@ -21,8 +21,8 @@ const Navigation: React.FC = () => {
                 isPending
                   ? 'pending'
                   : isActive
-                  ? 'p-2 block bg-zinc-900 rounded'
-                  : 'p-2 block hover:bg-zinc-900 rounded'
+                  ? 'p-2 block bg-zinc-800 rounded'
+                  : 'p-2 block hover:bg-zinc-800 rounded'
               }
               to={item.path}>
               {item.name}
@@ -41,8 +41,8 @@ const Brand: React.FC = () => {
 const User: React.FC = () => {
   return (
     <div className="flex items-center gap-2 p-2">
-      <div className="w-8 h-8 bg-zinc-900 rounded-full inline-flex items-center justify-center">
-        <CiUser></CiUser>
+      <div className="w-8 h-8 bg-zinc-800 rounded-full inline-flex items-center justify-center">
+        <CiUser />
       </div>
       <div className="flex flex-col">
         <span>alex@gmail.com</span>
@@ -57,15 +57,17 @@ const PlanItem: React.FC<{ title: string; count: string }> = ({ title, count }) 
       <span className="text-xs">
         {count} <span className="text-zinc-400 capitalize">{title}</span>
       </span>
-      <div className="h-2 bg-purple-800 w-full rounded-full" />
+      <div className="h-2 border border-zinc-200 w-full rounded-full overflow-hidden">
+        <div className="h-full w-1/2 bg-zinc-200 block" />
+      </div>
     </>
   );
 };
 
 const Plan: React.FC = () => {
   return (
-    <div className="flex flex-col gap-3 p-2">
-      <div className="flex items-center gap-2">
+    <div className="flex flex-col gap-5 p-2">
+      <div className="flex items-center gap-3">
         <span>Lite Tester Plan</span>
         <BsArrowUpRightSquare size="12" />
       </div>
@@ -79,7 +81,7 @@ const Plan: React.FC = () => {
 
 export const Sidebar = () => {
   return (
-    <div className="min-h-screen border-r border-zinc-900 w-[300px] p-3 ">
+    <div className="min-h-screen border-r border-zinc-800 w-[300px] p-3 ">
       <div className="gap-8 flex flex-col sticky top-3">
         <Brand />
         <User />

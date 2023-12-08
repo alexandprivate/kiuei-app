@@ -18,7 +18,7 @@ import { SignIn } from './pages/signin/SignIn';
 const ErrorPage = () => {
   return (
     <div className="flex h-screen w-full items-center justify-center">
-      <p>Ups 404 page here :)</p>;
+      <p>Ups page not found :(</p>;
     </div>
   );
 };

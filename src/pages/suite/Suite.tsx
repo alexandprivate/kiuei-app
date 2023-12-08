@@ -42,7 +42,7 @@ export const Suite = () => {
         <ListHeader
           title="Test"
           badgeValue={0}
-          action={{ label: 'Add Test', onClick: () => null }}
+          action={{ label: 'Add Test', onClick: () => null, icon: 'plus' }}
         />
       </OutlineWrapper>
     </>

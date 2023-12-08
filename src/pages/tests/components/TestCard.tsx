@@ -8,7 +8,7 @@ type TestCardProps = StatusBadgeProps & {
 
 export const TestCard: React.FC<TestCardProps> = ({ status, title, url }) => {
   return (
-    <div className="flex gap-4 border-b border-zinc-900 py-4">
+    <div className="flex gap-4 border-b border-zinc-800 py-4">
       <div className="w-1/3">{title}</div>
       <div className="w-1/3">
         <StatusBadge status={status} />
@@ -19,7 +19,7 @@ export const TestCard: React.FC<TestCardProps> = ({ status, title, url }) => {
           <NumberBadge value={12} />
         </div>
       </div>
-      <div className="flex flex-1 justify-end underline underline-offset-4 decoration-dashed">
+      <div className="flex flex-1 justify-end decoration-dashed">
         <span>{url.replace('https://', '')}</span>
       </div>
     </div>

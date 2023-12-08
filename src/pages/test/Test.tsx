@@ -28,7 +28,12 @@ export const Test = () => {
         </Highlights.Item>
         <Highlights.Item title="Url">
           <TfiWorld />
-          <span>alexandprivate.com</span>
+          <a
+            href={`https://alexandprivate.com`}
+            target="blank"
+            className="underline decoration-dashed underline-offset-4">
+            alexandprivate.com
+          </a>
         </Highlights.Item>
         <Highlights.Item title="Created">
           <CiTimer />
