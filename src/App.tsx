@@ -23,6 +23,8 @@ const ErrorPage = () => {
   );
 };
 
+// TODO: protect routes later checking auth user
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
@@ -35,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="/organization" element={<Organization />} />
       <Route path="/plan" element={<Organization />} />
       <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/plan" element={<SignIn />} />
     </Route>
   )
 );
