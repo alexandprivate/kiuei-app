@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -32,4 +32,9 @@ export const user = {
   update: (id: string, data: User) =>
     axios.put(`${baseUrl}/user/${id}`, data).then((res) => res.data),
   delete: (id: string) => axios.delete(`${baseUrl}/user/${id}`).then((res) => res.data)
+};
+
+export const commands = {
+  read: () =>
+    axios.get(`${baseUrl}/commands`).then((res: AxiosResponse<Record<string, Command>>) => res.data)
 };

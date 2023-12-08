@@ -16,7 +16,7 @@ export const SuiteCard: React.FC<SuiteCardProps> = ({ status, title }) => {
       <div className="w-1/3">
         <div className="flex items-center gap-3 justify-end">
           <span>Tests</span>
-          <NumberBadge value={120} />
+          <NumberBadge value={2} />
         </div>
       </div>
     </div>

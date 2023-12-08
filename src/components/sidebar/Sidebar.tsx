@@ -51,29 +51,60 @@ const User: React.FC = () => {
   );
 };
 
-const PlanItem: React.FC<{ title: string; count: string }> = ({ title, count }) => {
+type PlanItemProps = {
+  title: string;
+  count: string;
+  percentage: number;
+};
+
+const PlanItem: React.FC<PlanItemProps> = ({ title, count, percentage }) => {
+  console.log({ percentage });
   return (
     <>
       <span className="text-xs">
         {count} <span className="text-zinc-400 capitalize">{title}</span>
       </span>
-      <div className="h-2 border border-zinc-200 w-full rounded-full overflow-hidden">
-        <div className="h-full w-1/2 bg-zinc-200 block" />
+      <div className="h-2 border border-zinc-600 bg-green-400 w-full rounded-full overflow-hidden relative">
+        <div
+          style={{ width: `${percentage}%` }}
+          className={`h-full bg-zinc-800 rounded-full absolute`}
+        />
       </div>
     </>
   );
 };
 
 const Plan: React.FC = () => {
+  const usage = {
+    commands: {
+      used: 36,
+      limit: 100
+    },
+    runs: {
+      used: 18,
+      limit: 100
+    }
+  };
+
+  const commands = {
+    percentage: (usage.commands.used / usage.commands.limit) * 100,
+    count: `${usage.commands.used} / ${usage.commands.limit}`
+  };
+
+  const runs = {
+    percentage: (usage.runs.used / usage.runs.limit) * 100,
+    count: `${usage.runs.used} / ${usage.runs.limit}`
+  };
+
   return (
     <div className="flex flex-col gap-5 p-2">
       <div className="flex items-center gap-3">
-        <span>Lite Tester Plan</span>
+        <span>Base Plan</span>
         <BsArrowUpRightSquare size="12" />
       </div>
       <div className="flex flex-col gap-2 w-full ite">
-        <PlanItem title="commands" count="100/100" />
-        <PlanItem title="runs" count="100/100" />
+        <PlanItem title="commands" count={commands.count} percentage={commands.percentage} />
+        <PlanItem title="runs" count={runs.count} percentage={runs.percentage} />
       </div>
     </div>
   );

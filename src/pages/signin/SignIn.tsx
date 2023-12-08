@@ -1,11 +1,10 @@
 import { Input } from '@/components/input/Input';
 import { Button } from '@/components/button/Button';
 import { useRef } from 'react';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import { supabase } from '@/utils/supabase';
 
 export const SignIn: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const supabase = useSupabaseClient();
 
   const onSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,6 +22,8 @@ export const SignIn: React.FC = () => {
       console.log({ error });
       return;
     }
+
+    console.log('good');
   };
 
   return (
