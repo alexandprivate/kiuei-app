@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { CiUser } from 'react-icons/ci';
 import { BsArrowUpRightSquare } from 'react-icons/bs';
+import { useSession } from '@/store/useSession';
 
 const menu = [
   { name: 'Home', path: '/' },
@@ -39,13 +40,18 @@ const Brand: React.FC = () => {
 };
 
 const User: React.FC = () => {
+  const session = useSession((s) => s.session);
+
+  const truncatedEmail =
+    session?.user.email?.slice(0, 20) + ((session?.user.email?.length ?? 0) > 20 ? '...' : '');
+
   return (
     <div className="flex items-center gap-2 p-2">
       <div className="w-8 h-8 bg-zinc-800 rounded-full inline-flex items-center justify-center">
         <CiUser />
       </div>
       <div className="flex flex-col">
-        <span>alex@gmail.com</span>
+        <span>{truncatedEmail}</span>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const initialState = {
   session: null
 };
 
-export const useUser = create<UserStore>()(
+export const useSession = create<UserStore>()(
   devtools((set) => ({
     ...initialState,
     setSession: (session) => set({ session })

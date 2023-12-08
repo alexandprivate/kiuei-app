@@ -4,14 +4,14 @@ import { TopBar } from '@/components/topbar/TopBar';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { supabase } from '@/utils/supabase';
-import { useUser } from '@/store/useUser';
+import { useSession } from '@/store/useSession';
 import { useNavigate } from 'react-router-dom';
 
 export const Layout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const setSession = useUser((s) => s.setSession);
+  const setSession = useSession((s) => s.setSession);
   const renderLayoutElements = pathname !== '/sign-in';
 
   useEffect(() => {
@@ -22,7 +22,6 @@ export const Layout = () => {
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       if (session) {
-        console.log({ session });
         navigate('/');
       } else {
         navigate('/sign-in');
