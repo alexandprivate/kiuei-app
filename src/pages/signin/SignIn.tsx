@@ -1,13 +1,29 @@
 import { Input } from '@/components/input/Input';
 import { Button } from '@/components/button/Button';
-import { useRef } from 'react';
+import { useRef, useReducer } from 'react';
 import { supabase } from '@/utils/supabase';
+
+type State = {
+  loading: boolean;
+  error: boolean;
+  success: boolean;
+};
+
+const initialState: State = {
+  loading: false,
+  error: false,
+  success: false
+};
+
+const reducer = (current: State, update: Partial<State>) => ({ ...current, ...update });
 
 export const SignIn: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
+  const [{ loading, error, success }, dispatch] = useReducer(reducer, initialState);
 
   const onSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch({ error: false, loading: true });
     const { email } = e.currentTarget;
     const emailRedirectTo = import.meta.env.VITE_EMAIL_REDIRECT_URL;
 
@@ -19,11 +35,11 @@ export const SignIn: React.FC = () => {
     });
 
     if (error) {
-      console.log({ error });
+      dispatch({ error: true, loading: false, success: false });
       return;
     }
 
-    console.log('good');
+    dispatch({ error: false, loading: false, success: true });
   };
 
   return (
@@ -34,11 +50,23 @@ export const SignIn: React.FC = () => {
           <p className="text-lg">Let's ship some automation!</p>
         </div>
         <form className="flex gap-4 flex-col" ref={formRef} onSubmit={onSignIn}>
-          <Input placeholder="Email address" type="email" required name="email" />
-          <Button type="submit" className="w-full justify-center block">
+          <Input
+            placeholder="Email address"
+            type="email"
+            required
+            name="email"
+            disabled={loading || success}
+          />
+          <Button
+            type="submit"
+            disabled={loading || success}
+            showSpinner={loading}
+            className="w-full justify-center block">
             Sign In
           </Button>
         </form>
+        {success && <p className="text-green-400">Check your email :)</p>}
+        {error && <p className="text-red-500">Something went wrong, try again</p>}
       </div>
     </div>
   );

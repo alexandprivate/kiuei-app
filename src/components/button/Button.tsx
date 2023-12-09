@@ -4,6 +4,7 @@ import { GoPlus as PlusIcon } from 'react-icons/go';
 import { IoSaveOutline as SaveIcon } from 'react-icons/io5';
 import { RiTestTubeLine as TestIcon } from 'react-icons/ri';
 import { LuUserPlus2 as AddUserIcon } from 'react-icons/lu';
+import { PiSpinner as SpinnerIcon } from 'react-icons/pi';
 
 const FlavorsMap = {
   primary: 'bg-zinc-100 text-zinc-900 hover:bg-zinc-300',
@@ -28,6 +29,7 @@ export type ButtonProps = React.ComponentProps<'button'> & {
   size?: keyof typeof SizeMap;
   className?: string;
   icon?: keyof typeof IconMap;
+  showSpinner?: boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -36,6 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'md',
   className,
   icon = null,
+  showSpinner,
   ...restProps
 }) => {
   return (
@@ -48,7 +51,11 @@ export const Button: React.FC<ButtonProps> = ({
         className
       )}>
       {icon !== null && <span>{IconMap[icon]}</span>}
-      <span>{children}</span>
+      {showSpinner ? (
+        <SpinnerIcon size={20} className="animate-spin mx-auto" />
+      ) : (
+        <span>{children}</span>
+      )}
     </button>
   );
 };
