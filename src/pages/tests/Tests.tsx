@@ -13,7 +13,7 @@ const data = [
     id: '2',
     title: 'My Portfolio contact page',
     url: 'https://alexandprivate.com',
-    status: 'pending'
+    status: 'no result'
   },
   {
     id: '3',
