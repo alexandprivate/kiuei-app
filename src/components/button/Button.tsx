@@ -40,11 +40,13 @@ export const Button: React.FC<ButtonProps> = ({
   icon = null,
   showSpinner,
   type = 'button',
+  disabled,
   ...restProps
 }) => {
   return (
     <button
       type={type}
+      disabled={disabled || showSpinner}
       {...restProps}
       className={cn(
         'rounded transition-all inline-flex items-center gap-2',
@@ -52,11 +54,13 @@ export const Button: React.FC<ButtonProps> = ({
         SizeMap[size],
         className
       )}>
-      {icon !== null && <span>{IconMap[icon]}</span>}
       {showSpinner ? (
         <SpinnerIcon size={20} className="animate-spin mx-auto" />
       ) : (
-        <span>{children}</span>
+        <>
+          {icon !== null && <span>{IconMap[icon]}</span>}
+          <span>{children}</span>
+        </>
       )}
     </button>
   );

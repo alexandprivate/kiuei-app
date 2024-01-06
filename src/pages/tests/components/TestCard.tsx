@@ -5,9 +5,10 @@ import { WorldIcon } from '@/components/icon/Icon';
 type TestCardProps = StatusBadgeProps & {
   url: string;
   title: string;
+  numberOfCommands: number;
 };
 
-export const TestCard: React.FC<TestCardProps> = ({ results, title, url }) => {
+export const TestCard: React.FC<TestCardProps> = ({ results, title, url, numberOfCommands }) => {
   return (
     <div className="flex gap-4 border-b border-zinc-800 hover:border-zinc-700 py-4 transition-all">
       <div className="flex-1">{title}</div>
@@ -17,7 +18,7 @@ export const TestCard: React.FC<TestCardProps> = ({ results, title, url }) => {
       <div className="flex-1">
         <div className="flex items-center gap-2">
           <span>Commands</span>
-          <NumberBadge value={12} />
+          <NumberBadge value={numberOfCommands} />
         </div>
       </div>
       <div className="flex flex-1 justify-end items-center gap-2">

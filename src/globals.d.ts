@@ -43,7 +43,19 @@ type Test = {
   results: TestRunResult[];
   screenshots: string | null;
   cron: unknown | null;
-  commands: Command[];
+  commands: TestCommand[];
+};
+
+type TestCommand = {
+  id: string;
+  name: string;
+  paramsNames: string;
+  key: string;
+  line: number;
+  params: string;
+  createdAt: string;
+  updatedAt: string;
+  testId: string;
 };
 
 type TestRunResultOutput = {

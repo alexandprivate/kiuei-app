@@ -28,7 +28,12 @@ export const Tests = () => {
       <div className="flex flex-col">
         {data?.user?.org?.tests.map((test) => (
           <Link to={`/tests/${test.id}`} key={test.id}>
-            <TestCard title={test.description} url={test.url} results={test.results} />
+            <TestCard
+              title={test.description}
+              url={test.url}
+              results={test.results}
+              numberOfCommands={test.commands.length}
+            />
           </Link>
         ))}
       </div>

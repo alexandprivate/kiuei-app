@@ -11,10 +11,10 @@ const statusMap = {
 } as const;
 
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ results }) => {
-  if (results.length === 0) return null;
-
   const status =
     results.length === 0 ? 'no result' : results[0].status === 'failed' ? 'failed' : 'passed';
+
+  console.log({ status });
   return (
     <span
       className={cn(

@@ -2,24 +2,24 @@ import {
   Route,
   RouterProvider,
   createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
+  createRoutesFromElements
+} from 'react-router-dom';
 
-import { Layout } from "./components/layout/Layout";
-import { Home } from "./pages/home/Home";
-import { Organization } from "./pages/organization/Organization";
-import { Settings } from "./pages/settings/Settings";
-import { SignIn } from "./pages/signin/SignIn";
-import { Suite } from "./pages/suite/Suite";
-import { Suites } from "./pages/suites/Suites";
-import { Test } from "./pages/test/Test";
-import { Tests } from "./pages/tests/Tests";
-import { Onboarding } from "./pages/onboarding/Onboarding";
+import { Layout } from './components/layout/Layout';
+import { Home } from './pages/home/Home';
+import { Organization } from './pages/organization/Organization';
+import { Settings } from './pages/settings/Settings';
+import { SignIn } from './pages/signin/SignIn';
+import { Suite } from './pages/suite/Suite';
+import { Suites } from './pages/suites/Suites';
+import { Test } from './pages/test/Test';
+import { Tests } from './pages/tests/Tests';
+import { Onboarding } from './pages/onboarding/Onboarding';
 
 const ErrorPage = () => {
   return (
     <div className="flex h-screen w-full items-center justify-center">
-      <p>Ups page not found :(</p>;
+      <p>Ups something went wrong :o</p>
     </div>
   );
 };
@@ -39,8 +39,8 @@ const router = createBrowserRouter(
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/plan" element={<SignIn />} />
       <Route path="/onboarding" element={<Onboarding />} />
-    </Route>,
-  ),
+    </Route>
+  )
 );
 
 function App() {

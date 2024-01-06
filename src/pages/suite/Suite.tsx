@@ -1,27 +1,24 @@
-import { Highlights } from "@/components/highlights/Highlights";
-import { ListHeader } from "@/components/listHeader/ListHeader";
-import { OutlineWrapper } from "@/components/outlineWrapper/OutlineWrapper";
-import {
-  PageHeader,
-  PageHeaderProps,
-} from "@/components/pageHeader/PageHeader";
-import { StatusBadge } from "@/components/statusBadge/StatusBadge";
-import { BsThreeDots } from "react-icons/bs";
-import { CiTimer } from "react-icons/ci";
+import { Highlights } from '@/components/highlights/Highlights';
+import { ListHeader } from '@/components/listHeader/ListHeader';
+import { OutlineWrapper } from '@/components/outlineWrapper/OutlineWrapper';
+import { PageHeader, PageHeaderProps } from '@/components/pageHeader/PageHeader';
+import { StatusBadge } from '@/components/statusBadge/StatusBadge';
+import { BsThreeDots } from 'react-icons/bs';
+import { CiTimer } from 'react-icons/ci';
 
 export const Suite = () => {
   const actions = [
-    { name: "Run Suite", onClick: () => {} },
-    { name: "Save", onClick: () => {}, flavor: "secondary" },
-    { name: <BsThreeDots />, onClick: () => {}, flavor: "secondary" },
-  ] as PageHeaderProps["actions"];
+    { name: 'Run Suite', onClick: () => {} },
+    { name: 'Save', onClick: () => {}, flavor: 'secondary' },
+    { name: <BsThreeDots />, onClick: () => {}, flavor: 'secondary' }
+  ] as PageHeaderProps['actions'];
 
   return (
     <>
       <PageHeader title="My sweet test suite" actions={actions} />
       <Highlights>
         <Highlights.Item title="Status">
-          <StatusBadge status="passed" />
+          <StatusBadge results={[]} />
         </Highlights.Item>
         <Highlights.Item title="Last Run">
           <CiTimer />
@@ -45,7 +42,7 @@ export const Suite = () => {
         <ListHeader
           title="Test"
           badgeValue={0}
-          action={{ label: "Add Test", onClick: () => null, icon: "plus" }}
+          action={{ label: 'Add Test', onClick: () => null, icon: 'plus' }}
         />
       </OutlineWrapper>
     </>
