@@ -1,10 +1,10 @@
-import React from 'react';
-import { Button, ButtonProps } from '../button/Button';
-import { NumberBadge } from '../numberBadge/NumberBadge';
+import React from "react";
+import { Button, ButtonProps } from "../button/Button";
+import { NumberBadge } from "../numberBadge/NumberBadge";
 
 export const ListHeader: React.FC<{
   title: string;
-  action: { label: string; onClick: () => void; icon?: ButtonProps['icon'] };
+  action: { label: string; onClick: () => void; icon?: ButtonProps["icon"] };
   badgeValue: number;
 }> = ({ title, action, badgeValue }) => {
   return (

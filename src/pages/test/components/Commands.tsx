@@ -1,11 +1,15 @@
-import { ListHeader } from '@/components/listHeader/ListHeader';
-import { DndContext } from '@dnd-kit/core';
-import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
-import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { MdDragIndicator as DragIcon } from 'react-icons/md';
-import { IoTrashOutline as TrashIcon } from 'react-icons/io5';
-import { IoDuplicateOutline as DuplicateIcon } from 'react-icons/io5';
-import { OutlineWrapper } from '@/components/outlineWrapper/OutlineWrapper';
+import { ListHeader } from "@/components/listHeader/ListHeader";
+import { OutlineWrapper } from "@/components/outlineWrapper/OutlineWrapper";
+import { DndContext } from "@dnd-kit/core";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import {
+  SortableContext,
+  arrayMove,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { IoTrashOutline as TrashIcon } from "react-icons/io5";
+import { IoDuplicateOutline as DuplicateIcon } from "react-icons/io5";
+import { MdDragIndicator as DragIcon } from "react-icons/md";
 
 const CommandCard = () => {
   return (
@@ -52,12 +56,18 @@ export const Commands = () => {
       <ListHeader
         title="Commands"
         badgeValue={0}
-        action={{ label: 'Add Command', onClick: () => null, icon: 'plus' }}
+        action={{ label: "Add Command", onClick: () => null, icon: "plus" }}
       />
 
       <div className="flex flex-col gap-2 mt-3">
-        <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={handleDragEnd}>
-          <SortableContext items={[1, 2, 3, 4, 5]} strategy={verticalListSortingStrategy}>
+        <DndContext
+          modifiers={[restrictToVerticalAxis]}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext
+            items={[1, 2, 3, 4, 5]}
+            strategy={verticalListSortingStrategy}
+          >
             {new Array(12).fill(0).map((_, index) => (
               <CommandCard key={index} />
             ))}

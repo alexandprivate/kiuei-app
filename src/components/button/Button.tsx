@@ -1,10 +1,10 @@
 import React from 'react';
-import { cn } from '../../utils';
 import { GoPlus as PlusIcon } from 'react-icons/go';
 import { IoSaveOutline as SaveIcon } from 'react-icons/io5';
-import { RiTestTubeLine as TestIcon } from 'react-icons/ri';
 import { LuUserPlus2 as AddUserIcon } from 'react-icons/lu';
 import { PiSpinner as SpinnerIcon } from 'react-icons/pi';
+import { RiTestTubeLine as TestIcon } from 'react-icons/ri';
+import { cn } from '../../utils';
 
 const FlavorsMap = {
   primary: 'bg-zinc-100 text-zinc-900 hover:bg-zinc-300',
@@ -39,10 +39,12 @@ export const Button: React.FC<ButtonProps> = ({
   className,
   icon = null,
   showSpinner,
+  type = 'button',
   ...restProps
 }) => {
   return (
     <button
+      type={type}
       {...restProps}
       className={cn(
         'rounded transition-all inline-flex items-center gap-2',

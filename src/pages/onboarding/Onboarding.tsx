@@ -1,30 +1,27 @@
-import { Input } from '@/components/input/Input';
-import { Button } from '@/components/button/Button';
-import { useSearchParams } from 'react-router-dom';
+import { Button } from "@/components/button/Button";
+import { Input } from "@/components/input/Input";
+import { useSearchParams } from "react-router-dom";
+
+const StepsIndicator = () => {
+  return (
+    // React steps indicator component
+    <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center gap-2">
+        <div className="w-4 h-4 rounded-full bg-zinc-100"/>
+        <div className="w-4 h-4 rounded-full bg-zinc-100"/>
+        <div className="w-4 h-4 rounded-full bg-zinc-100"/>
+      </div>
+    </div>
+  );
+}
 
 export const Onboarding: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 relative">
-      <div className="fixed -bottom-48 h-96 w-1/3 bg-purple-950/20 rounded-full blur-3xl"></div>
-      <div className="text-center flex flex-col gap-10 w-full max-w-sm">
-        <div className="flex flex-col gap-3">
-          <h1 className="font-bold text-5xl">kiuei</h1>
-          <p className="text-lg">Let's ship some automation!</p>
-        </div>
-        <form className="flex gap-4 flex-col">
-          <Input
-            placeholder="Email address"
-            value={searchParams.get('email') || ''}
-            onChange={(e) => {
-              searchParams.set('email', e.target.value);
-              setSearchParams(searchParams);
-            }}
-          />
-          <Button className="w-full justify-center block">Sign In</Button>
-        </form>
-      </div>
+      <StepsIndicator />
+
     </div>
   );
 };

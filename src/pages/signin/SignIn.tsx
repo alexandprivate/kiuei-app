@@ -1,7 +1,7 @@
-import { Input } from '@/components/input/Input';
-import { Button } from '@/components/button/Button';
-import { useRef, useReducer } from 'react';
-import { supabase } from '@/utils/supabase';
+import { Button } from "@/components/button/Button";
+import { Input } from "@/components/input/Input";
+import { supabase } from "@/utils/supabase";
+import { useReducer, useRef } from "react";
 
 type State = {
   loading: boolean;
@@ -12,14 +12,20 @@ type State = {
 const initialState: State = {
   loading: false,
   error: false,
-  success: false
+  success: false,
 };
 
-const reducer = (current: State, update: Partial<State>) => ({ ...current, ...update });
+const reducer = (current: State, update: Partial<State>) => ({
+  ...current,
+  ...update,
+});
 
 export const SignIn: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [{ loading, error, success }, dispatch] = useReducer(reducer, initialState);
+  const [{ loading, error, success }, dispatch] = useReducer(
+    reducer,
+    initialState,
+  );
 
   const onSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,8 +36,8 @@ export const SignIn: React.FC = () => {
     const { error } = await supabase.auth.signInWithOtp({
       email: email.value,
       options: {
-        emailRedirectTo
-      }
+        emailRedirectTo,
+      },
     });
 
     if (error) {
@@ -61,12 +67,15 @@ export const SignIn: React.FC = () => {
             type="submit"
             disabled={loading || success}
             showSpinner={loading}
-            className="w-full justify-center block">
+            className="w-full justify-center block"
+          >
             Sign In
           </Button>
         </form>
         {success && <p className="text-green-400">Check your email :)</p>}
-        {error && <p className="text-red-500">Something went wrong, try again</p>}
+        {error && (
+          <p className="text-red-500">Something went wrong, try again</p>
+        )}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
-import { Button } from '@/components/button/Button';
-import { supabase } from '@/utils/supabase';
+import { Button } from "@/components/button/Button";
+import { supabase } from "@/utils/supabase";
 
 export const TopBar = () => {
   return (
@@ -9,7 +9,11 @@ export const TopBar = () => {
         <li>Help</li>
         <li>Docs</li>
         <li>
-          <Button size="sm" flavor="secondary" onClick={() => supabase.auth.signOut()}>
+          <Button
+            size="sm"
+            flavor="secondary"
+            onClick={() => supabase.auth.signOut()}
+          >
             Sign Out
           </Button>
         </li>

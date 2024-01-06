@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "check": "biome check ./src",
+    "lint": "biome lint ./src",
+    "format": "biome format --write ./src",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,6 +17,8 @@
     "@dnd-kit/sortable": "^8.0.0",
     "@supabase/auth-helpers-react": "^0.4.2",
     "@supabase/supabase-js": "^2.39.0",
+    "@tanstack/react-query": "^5.17.7",
+    "@tanstack/react-query-devtools": "^5.17.7",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
@@ -26,6 +30,7 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.4.1",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",

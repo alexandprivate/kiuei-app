@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <div className="flex flex-col gap-3">{children}</div>;
@@ -23,7 +23,9 @@ export const Highlights: React.FC<{ children: React.ReactNode }> & {
 } = ({ children }) => {
   return (
     <div className="flex flex-col gap-6 items-start">
-      <div className="grid grid-cols-2 xl:grid-cols-3 items-center gap-x-4 gap-y-6">{children}</div>
+      <div className="grid grid-cols-2 xl:grid-cols-3 items-center gap-x-4 gap-y-6">
+        {children}
+      </div>
     </div>
   );
 };

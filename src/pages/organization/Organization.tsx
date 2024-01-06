@@ -1,6 +1,6 @@
-import { OutlineWrapper } from '@/components/outlineWrapper/OutlineWrapper';
-import { PageHeader } from '@/components/pageHeader/PageHeader';
-import { ListHeader } from '@/components/listHeader/ListHeader';
+import { ListHeader } from "@/components/listHeader/ListHeader";
+import { OutlineWrapper } from "@/components/outlineWrapper/OutlineWrapper";
+import { PageHeader } from "@/components/pageHeader/PageHeader";
 
 export const Organization = () => {
   return (
@@ -11,7 +11,11 @@ export const Organization = () => {
         <ListHeader
           title="Members"
           badgeValue={0}
-          action={{ label: 'Invite Members', onClick: () => null, icon: 'addUser' }}
+          action={{
+            label: "Invite Members",
+            onClick: () => null,
+            icon: "addUser",
+          }}
         />
       </OutlineWrapper>
     </>

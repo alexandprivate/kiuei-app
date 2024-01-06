@@ -1,42 +1,75 @@
 // entities
-interface Org {
+type Org = {
   id: string;
   name: string;
-  description: string;
-  created: string;
-  updated: string;
-}
-
-interface User {
-  id: string;
-  name: string;
+  contactFullName: string;
   email: string;
-  created: string;
-  updated: string;
-}
+  active: boolean;
+  plan: number;
+  billedUntil: string;
+  createdAt: string;
+  updatedAt: string;
+  tests: Test[];
+};
 
-interface Suite {
+type User = {
+  id: string;
+  email: string;
+  fullName: string;
+  active: boolean;
+  isInvited: boolean;
+  createdAt: string;
+  updatedAt: string;
+  orgId: string;
+};
+
+type Suite = {
   id: string;
   name: string;
   description: string;
   created: string;
   updated: string;
-}
+};
 
-interface Test {
+type Test = {
   id: string;
-  name: string;
   description: string;
-  created: string;
-  updated: string;
-}
+  url: string;
+  createdAt: string;
+  updatedAt: string;
+  lastSavedAt: string;
+  userId: string;
+  orgId: string;
+  results: TestRunResult[];
+  screenshots: string | null;
+  cron: unknown | null;
+  commands: Command[];
+};
 
-interface Command {
+type TestRunResultOutput = {
+  status: string;
+  testId: string;
+  errors: { message: string; line: number }[];
+};
+
+type TestRunResult = {
+  status: string;
+  testId: string;
+  output: TestRunResultOutput[];
+  runAtDate: string;
+  commands: string;
+  url: string;
+};
+
+type CommandProps = {
+  line: string;
+  name: string;
+  params: string[];
+  paramsNames: string[];
+};
+
+type Command = {
   name: string;
   type: 'assertion' | 'action';
-  sentiment?: 'positive' | 'negative';
-  commands: Record<
-    string,
-    { key: string; line: string; name: string; params: string[]; paramsNames: string[] }
-  >;
-}
+  commands: Record<string, CommandProps>;
+};

@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export const Collapsible: React.FC<{
   children: React.ReactNode;
   open: boolean;
 }> = ({ children, open }) => {
   return (
-    <div className={`collapsible ${open ? 'open' : ''}`}>
+    <div className={`collapsible ${open ? "open" : ""}`}>
       <div className="collapsible-inner">{children}</div>
     </div>
   );

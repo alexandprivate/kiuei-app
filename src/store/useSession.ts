@@ -1,19 +1,19 @@
-import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
-import type { Session } from '@supabase/supabase-js';
+import type { Session } from "@supabase/supabase-js";
+import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
-interface UserStore {
+interface UserSessionStore {
   session: Session | null;
   setSession: (session: Session | null) => void;
 }
 
 const initialState = {
-  session: null
+  session: null,
 };
 
-export const useSession = create<UserStore>()(
+export const useSession = create<UserSessionStore>()(
   devtools((set) => ({
     ...initialState,
-    setSession: (session) => set({ session })
-  }))
+    setSession: (session) => set({ session }),
+  })),
 );

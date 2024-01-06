@@ -1,19 +1,20 @@
 import {
-  createBrowserRouter,
+  Route,
   RouterProvider,
+  createBrowserRouter,
   createRoutesFromElements,
-  Route
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import { Home } from './pages/home/Home';
-import { Tests } from './pages/tests/Tests';
-import { Test } from './pages/test/Test';
-import { Layout } from './components/layout/Layout';
-import { Settings } from './pages/settings/Settings';
-import { Suites } from './pages/suites/Suites';
-import { Suite } from './pages/suite/Suite';
-import { Organization } from './pages/organization/Organization';
-import { SignIn } from './pages/signin/SignIn';
+import { Layout } from "./components/layout/Layout";
+import { Home } from "./pages/home/Home";
+import { Organization } from "./pages/organization/Organization";
+import { Settings } from "./pages/settings/Settings";
+import { SignIn } from "./pages/signin/SignIn";
+import { Suite } from "./pages/suite/Suite";
+import { Suites } from "./pages/suites/Suites";
+import { Test } from "./pages/test/Test";
+import { Tests } from "./pages/tests/Tests";
+import { Onboarding } from "./pages/onboarding/Onboarding";
 
 const ErrorPage = () => {
   return (
@@ -37,8 +38,9 @@ const router = createBrowserRouter(
       <Route path="/plan" element={<Organization />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/plan" element={<SignIn />} />
-    </Route>
-  )
+      <Route path="/onboarding" element={<Onboarding />} />
+    </Route>,
+  ),
 );
 
 function App() {

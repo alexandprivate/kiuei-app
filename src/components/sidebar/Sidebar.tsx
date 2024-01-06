@@ -1,7 +1,8 @@
-import { NavLink } from 'react-router-dom';
-import { CiUser } from 'react-icons/ci';
-import { BsArrowUpRightSquare } from 'react-icons/bs';
 import { useSession } from '@/store/useSession';
+import { BsArrowUpRightSquare } from 'react-icons/bs';
+import { CiUser } from 'react-icons/ci';
+import { NavLink } from 'react-router-dom';
+import { cn } from '@/utils';
 
 const menu = [
   { name: 'Home', path: '/' },
@@ -18,12 +19,8 @@ const Navigation: React.FC = () => {
         {menu.map((item) => (
           <li key={item.name}>
             <NavLink
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? 'pending'
-                  : isActive
-                  ? 'p-2 block bg-zinc-800 rounded'
-                  : 'p-2 block hover:bg-zinc-800 rounded'
+              className={({ isActive }) =>
+                cn('rounded p-2 block', isActive ? 'bg-zinc-800' : 'hover:bg-zinc-800')
               }
               to={item.path}>
               {item.name}
@@ -64,7 +61,6 @@ type PlanItemProps = {
 };
 
 const PlanItem: React.FC<PlanItemProps> = ({ title, count, percentage }) => {
-  console.log({ percentage });
   return (
     <>
       <span className="text-xs">
@@ -73,7 +69,7 @@ const PlanItem: React.FC<PlanItemProps> = ({ title, count, percentage }) => {
       <div className="h-2 border border-zinc-600 bg-green-400 w-full rounded-full overflow-hidden relative">
         <div
           style={{ width: `${percentage}%` }}
-          className={`h-full bg-zinc-800 rounded-full absolute`}
+          className="h-full bg-zinc-800 rounded-full absolute"
         />
       </div>
     </>
