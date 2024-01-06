@@ -12,6 +12,7 @@ export const Tests = () => {
 
   const session = useSession((s) => s.session);
 
+  // TODO: include comments in the test for user and org under user
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
     queryFn: () => api.user.read(session?.user.id ?? ''),

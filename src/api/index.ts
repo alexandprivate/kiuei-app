@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { QueryClient } from '@tanstack/react-query';
 
-interface UserResponse extends User {
+export interface UserResponse extends User {
   org: Org;
   tests: Test[];
 }
@@ -36,7 +36,10 @@ export const org = {
 };
 
 export const test = {
-  read: (id: string) => axios.get(`${baseUrl}${routes.test}/${id}`).then((res) => res.data),
+  read: (id: string) =>
+    axios
+      .get(`${baseUrl}${routes.test}/${id}`)
+      .then((res: AxiosResponse<{ test: Test }>) => res.data),
   create: (data: Test) => axios.post(`${baseUrl}${routes.test}`, data).then((res) => res.data),
   update: (id: string, data: Test) =>
     axios.put(`${baseUrl}${routes.test}/${id}`, data).then((res) => res.data),

@@ -3,10 +3,24 @@ import { PageHeader, PageHeaderProps } from '@/components/pageHeader/PageHeader'
 import { StatusBadge } from '@/components/statusBadge/StatusBadge';
 import { WorldIcon, TimerIcon, ThreeDotsIcon } from '@/components/icon/Icon';
 import { Commands } from './components/Commands';
+import { useQueryClient, useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+import { UserResponse, test } from '@/api';
 
 export const Test = () => {
-  // TODO: fetch test with initial data
-  // TODO: get the id from URL
+  const param = useParams();
+  const client = useQueryClient();
+
+  const initialData = client
+    .getQueryData<{ user: UserResponse }>(['user'])
+    ?.user?.org?.tests.find((t: Test) => t.id === param.testId) as Test;
+
+  const { data, isLoading } = useQuery({
+    queryKey: [`test_${param.testId}`],
+    queryFn: () => test.read(param.testId ?? ''),
+    enabled: true,
+    initialData: { test: initialData }
+  });
 
   const actions = [
     { name: 'Run Test', onClick: () => {}, icon: 'test' },
@@ -14,13 +28,15 @@ export const Test = () => {
     { name: <ThreeDotsIcon />, onClick: () => {}, flavor: 'secondary' }
   ] as PageHeaderProps['actions'];
 
+  if (isLoading && data == null) return <>Loading...</>;
+
   return (
     <>
-      <PageHeader title="My Portfolio home page" actions={actions} />
+      <PageHeader title={data.test.description} actions={actions} />
 
       <Highlights>
         <Highlights.Item title="Status">
-          <StatusBadge results={[]} />
+          <StatusBadge results={data.test.results} />
         </Highlights.Item>
         <Highlights.Item title="Last Run">
           <TimerIcon />
@@ -29,22 +45,23 @@ export const Test = () => {
         <Highlights.Item title="Url">
           <WorldIcon />
           <a
-            href="https://alexandprivate.com"
+            href={data.test.url}
             target="blank"
             className="underline decoration-dashed underline-offset-4">
-            alexandprivate.com
+            {data.test.url}
           </a>
         </Highlights.Item>
         <Highlights.Item title="Created">
           <TimerIcon />
-          <span>3 months ago</span>
+          <span>{data.test.createdAt}</span>
         </Highlights.Item>
         <Highlights.Item title="Last Update">
           <TimerIcon />
-          <span>3 months ago</span>
+          <span>{data.test.updatedAt}</span>
         </Highlights.Item>
         <Highlights.Item title="Scheduled run">
           <TimerIcon />
+          {/* TODO: solve this */}
           <span>Daily at 11:00 am</span>
         </Highlights.Item>
       </Highlights>
