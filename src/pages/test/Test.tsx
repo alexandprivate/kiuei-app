@@ -1,7 +1,7 @@
 import { Highlights } from '@/components/highlights/Highlights';
 import { PageHeader, PageHeaderProps } from '@/components/pageHeader/PageHeader';
 import { StatusBadge } from '@/components/statusBadge/StatusBadge';
-import { WorldIcon, TimerIcon, ThreeDotsIcon, DateIcon } from '@/components/icon/Icon';
+import { PlanetIcon, CalendarIcon, ThreeDotsIcon } from '@/components/icon/Icon';
 import { Commands } from './components/Commands';
 import { useQueryClient, useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
@@ -25,6 +25,7 @@ export const Test = () => {
     initialData: initialData ? { test: initialData } : undefined
   });
 
+  // TODO: memoize this everywhere
   const actions = [
     { name: 'Run Test', onClick: () => {}, icon: 'test', showSpinner: false },
     { name: 'Save', onClick: () => {}, flavor: 'secondary', icon: 'save', showSpinner: false },
@@ -42,11 +43,11 @@ export const Test = () => {
           <StatusBadge results={data?.test.results ?? []} />
         </Highlights.Item>
         <Highlights.Item title="Last Run">
-          <DateIcon />
+          <CalendarIcon />
           <span>{lastRunDate(data?.test.results[0]?.runAtDate)}</span>
         </Highlights.Item>
         <Highlights.Item title="Url">
-          <WorldIcon />
+          <PlanetIcon />
           <a
             href={data?.test.url}
             target="blank"
@@ -55,15 +56,15 @@ export const Test = () => {
           </a>
         </Highlights.Item>
         <Highlights.Item title="Created">
-          <TimerIcon />
+          <CalendarIcon />
           <span>{formatDate(data?.test.createdAt ?? '')}</span>
         </Highlights.Item>
         <Highlights.Item title="Last Update">
-          <TimerIcon />
+          <CalendarIcon />
           <span>{formatDate(data?.test.updatedAt ?? '')}</span>
         </Highlights.Item>
         <Highlights.Item title="Scheduled run">
-          <TimerIcon />
+          <CalendarIcon />
           {/* TODO: solve this */}
           <span>Daily at 11:00 am</span>
         </Highlights.Item>

@@ -1,6 +1,6 @@
 import { NumberBadge } from '@/components/numberBadge/NumberBadge';
 import { StatusBadge, StatusBadgeProps } from '@/components/statusBadge/StatusBadge';
-import { WorldIcon } from '@/components/icon/Icon';
+import { PlanetIcon } from '@/components/icon/Icon';
 
 type TestCardProps = StatusBadgeProps & {
   url: string;
@@ -22,7 +22,7 @@ export const TestCard: React.FC<TestCardProps> = ({ results, title, url, numberO
         </div>
       </div>
       <div className="flex flex-1 justify-end items-center gap-2">
-        <WorldIcon />
+        <PlanetIcon />
         <span>{url.replace('https://', '')}</span>
       </div>
     </div>

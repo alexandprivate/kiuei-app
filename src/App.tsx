@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements
 } from 'react-router-dom';
-
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/home/Home';
 import { Organization } from './pages/organization/Organization';
@@ -14,7 +13,9 @@ import { Suite } from './pages/suite/Suite';
 import { Suites } from './pages/suites/Suites';
 import { Test } from './pages/test/Test';
 import { Tests } from './pages/tests/Tests';
-import { Onboarding } from './pages/onboarding/Onboarding';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import * as api from '@/api';
 
 const ErrorPage = () => {
   return (
@@ -38,13 +39,17 @@ const router = createBrowserRouter(
       <Route path="/plan" element={<Organization />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/plan" element={<SignIn />} />
-      <Route path="/onboarding" element={<Onboarding />} />
     </Route>
   )
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={api.client}>
+      <RouterProvider router={router} />;
+      <ReactQueryDevtools initialIsOpen={false} position="bottom" />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

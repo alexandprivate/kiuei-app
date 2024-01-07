@@ -1,4 +1,9 @@
-export { TfiWorld as WorldIcon } from 'react-icons/tfi';
-export { CiTimer as TimerIcon } from 'react-icons/ci';
+export { TfiWorld as PlanetIcon } from 'react-icons/tfi';
+export { CiTimer as ClockIcon } from 'react-icons/ci';
 export { BsThreeDots as ThreeDotsIcon } from 'react-icons/bs';
-export { CiCalendarDate as DateIcon } from 'react-icons/ci';
+export { CiCalendarDate as CalendarIcon } from 'react-icons/ci';
+export { PiSpinner as SpinnerIcon } from 'react-icons/pi';
+export { GoPlus as PlusIcon } from 'react-icons/go';
+export { IoSaveOutline as SaveIcon } from 'react-icons/io5';
+export { LuUserPlus2 as AddUserIcon } from 'react-icons/lu';
+export { RiTestTubeLine as TestIcon } from 'react-icons/ri';

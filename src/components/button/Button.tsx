@@ -1,17 +1,19 @@
 import React from 'react';
-import { GoPlus as PlusIcon } from 'react-icons/go';
-import { IoSaveOutline as SaveIcon } from 'react-icons/io5';
-import { LuUserPlus2 as AddUserIcon } from 'react-icons/lu';
-import { PiSpinner as SpinnerIcon } from 'react-icons/pi';
-import { RiTestTubeLine as TestIcon } from 'react-icons/ri';
 import { cn } from '../../utils';
+import { SpinnerIcon, TestIcon, AddUserIcon, SaveIcon, PlusIcon } from '../icon/Icon';
 
-const FlavorsMap = {
-  primary: 'bg-zinc-100 text-zinc-900 hover:bg-zinc-300',
-  secondary: 'bg-zinc-800 text-zinc-100 border border-zinc-600 hover:bg-zinc-700/80'
+const FLAVOR_MAP = {
+  primary: 'bg-zinc-100 text-zinc-900 hover:bg-zinc-300 disabled:bg-zinc-200',
+  secondary:
+    'bg-zinc-800 text-zinc-100 border border-zinc-600 hover:bg-zinc-700/80 disabled:bg-zinc-600'
 } as const;
 
-const SizeMap = {
+const BG_MAP = {
+  primary: 'bg-zinc-200',
+  secondary: 'bg-zinc-600'
+} as const;
+
+const SIZE_MAP = {
   sm: 'h-7 text-sm px-3',
   md: 'h-9 px-4'
 } as const;
@@ -25,12 +27,26 @@ const IconMap = {
 
 export type ButtonProps = React.ComponentProps<'button'> & {
   children: React.ReactNode;
-  flavor?: keyof typeof FlavorsMap;
-  size?: keyof typeof SizeMap;
+  flavor?: keyof typeof FLAVOR_MAP;
+  size?: keyof typeof SIZE_MAP;
   className?: string;
   icon?: keyof typeof IconMap;
   showSpinner?: boolean;
 };
+
+export const Spinner: React.FC<Required<Pick<ButtonProps, 'flavor' | 'size'>>> = ({
+  flavor,
+  size
+}) => (
+  <span
+    className={cn(
+      'w-full flex item-center justify-center z-10 absolute left-0 flex-col',
+      BG_MAP[flavor],
+      SIZE_MAP[size]
+    )}>
+    <SpinnerIcon size={20} className={cn('animate-spin mx-auto')} />
+  </span>
+);
 
 export const Button: React.FC<ButtonProps> = ({
   children,
@@ -49,19 +65,15 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled || showSpinner}
       {...restProps}
       className={cn(
-        'rounded transition-all inline-flex items-center gap-2',
-        FlavorsMap[flavor],
-        SizeMap[size],
+        'rounded transition-all inline-flex items-center gap-2 relative overflow-hidden',
+        FLAVOR_MAP[flavor],
+        SIZE_MAP[size],
         className
       )}>
-      {showSpinner ? (
-        <SpinnerIcon size={20} className="animate-spin mx-auto" />
-      ) : (
-        <>
-          {icon !== null && <span>{IconMap[icon]}</span>}
-          <span>{children}</span>
-        </>
-      )}
+      {showSpinner && <Spinner flavor={flavor} size={size} />}
+
+      {icon !== null && <span>{IconMap[icon]}</span>}
+      <span>{children}</span>
     </button>
   );
 };
