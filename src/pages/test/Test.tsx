@@ -40,11 +40,11 @@ export const Test = () => {
 
       <Highlights>
         <Highlights.Item title="Status">
-          <StatusBadge results={data?.test.results ?? []} />
+          <StatusBadge results={data?.test.results ?? '[]'} />
         </Highlights.Item>
         <Highlights.Item title="Last Run">
           <CalendarIcon />
-          <span>{lastRunDate(data?.test.results[0]?.runAtDate)}</span>
+          <span>{lastRunDate(JSON.parse(data?.test.results ?? '[]')[0]?.runAtDate)}</span>
         </Highlights.Item>
         <Highlights.Item title="Url">
           <PlanetIcon />

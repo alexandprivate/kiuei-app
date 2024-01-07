@@ -1,7 +1,7 @@
 import { cn } from '../../utils';
 
 export type StatusBadgeProps = {
-  results: TestRunResult[];
+  results: string;
 };
 
 const statusMap = {
@@ -11,10 +11,15 @@ const statusMap = {
 } as const;
 
 export const StatusBadge: React.FC<StatusBadgeProps> = ({ results }) => {
-  const status =
-    results.length === 0 ? 'no result' : results[0].status === 'failed' ? 'failed' : 'passed';
+  const parsedResults = JSON.parse(results) as TestRunResult[];
 
-  console.log({ status });
+  const status =
+    parsedResults.length === 0
+      ? 'no result'
+      : parsedResults[0].status === 'failed'
+      ? 'failed'
+      : 'passed';
+
   return (
     <span
       className={cn(

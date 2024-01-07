@@ -40,7 +40,7 @@ type Test = {
   lastSavedAt: string;
   userId: string;
   orgId: string;
-  results: TestRunResult[];
+  results: string;
   screenshots: string | null;
   cron: unknown | null;
   commands: TestCommand[];
