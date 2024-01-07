@@ -11,6 +11,16 @@ import * as api from '@/api';
 import { SpinnerIcon } from '@/components/icon/Icon';
 import { Onboarding } from '@/components/onboarding/Onboarding';
 
+const Spinner = () => {
+  return (
+    <div className="h-screen w-screen fixed flex flex-col item-center justify-center">
+      <span className="mx-auto">
+        <SpinnerIcon size={32} className="animate-spin mx-auto" />
+      </span>
+    </div>
+  );
+};
+
 export const Layout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -60,15 +70,9 @@ export const Layout = () => {
     }
   }, [userData]);
 
-  if (userData.data == null && userData.isLoading) {
-    return (
-      <div className="h-screen w-screen fixed flex flex-col item-center justify-center">
-        <span className="mx-auto">
-          <SpinnerIcon size={32} className="animate-spin mx-auto" />
-        </span>
-      </div>
-    );
-  }
+  if (userData.data == null && userData.isLoading) return <Spinner />;
+
+  if (showOnboarding) return <Onboarding />;
 
   return (
     <div className="flex relative">
@@ -76,7 +80,7 @@ export const Layout = () => {
       <div className="w-full flex flex-col gap-8 ">
         {renderLayoutElements && <TopBar />}
         <div className="w-full xl:w-10/12 mx-auto px-8">
-          {showOnboarding ? <Onboarding /> : <Outlet />}
+          <Outlet />
         </div>
       </div>
     </div>
