@@ -58,9 +58,10 @@ export const Layout = () => {
     });
   }, [setSession, navigate]);
 
-  if (userData.data == null && userData.isLoading) return <Spinner />;
+  if (userData.data == null && userData.isLoading && session != null) return <Spinner />;
 
-  if (userData.data?.user == null && !userData.isLoading) return <Onboarding />;
+  if (userData.data?.user == null && !userData.isLoading && !userData.isFetching && session != null)
+    return <Onboarding />;
 
   return (
     <div className="flex relative">
