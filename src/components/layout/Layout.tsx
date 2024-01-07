@@ -2,7 +2,7 @@ import { Sidebar } from '@/components/sidebar/Sidebar';
 import { TopBar } from '@/components/topbar/TopBar';
 import { useSession } from '@/store/useSession';
 import { supabase } from '@/utils/supabase';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -27,8 +27,6 @@ export const Layout = () => {
 
   const setSession = useSession((s) => s.setSession);
   const session = useSession((s) => s.session);
-
-  const [showOnboarding, setShowOnboarding] = useState(false);
 
   const renderLayoutElements = pathname !== '/sign-in' && pathname !== '/onboarding';
 
@@ -60,19 +58,9 @@ export const Layout = () => {
     });
   }, [setSession, navigate]);
 
-  useEffect(() => {
-    if (userData.data != null) {
-      // analyze if this user is onboard
-      if (userData.data.user.org == null) {
-        // update state to show onboarding modal
-        setShowOnboarding(true);
-      }
-    }
-  }, [userData]);
-
   if (userData.data == null && userData.isLoading) return <Spinner />;
 
-  if (showOnboarding) return <Onboarding />;
+  if (userData.data?.user == null && !userData.isLoading) return <Onboarding />;
 
   return (
     <div className="flex relative">

@@ -65,7 +65,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled || showSpinner}
       {...restProps}
       className={cn(
-        'rounded transition-all inline-flex items-center gap-2 relative overflow-hidden',
+        'rounded transition-all inline-flex items-center gap-2 relative overflow-hidden justify-center',
         FLAVOR_MAP[flavor],
         SIZE_MAP[size],
         className

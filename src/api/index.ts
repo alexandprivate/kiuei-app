@@ -18,6 +18,7 @@ export const client = new QueryClient({
 const baseUrl = import.meta.env.VITE_API_URL;
 const routes = {
   user: '/user',
+  onboardUser: '/org/user',
   org: '/org',
   test: '/test',
   commands: '/commands',
@@ -54,12 +55,23 @@ export const suite = {
   delete: (id: string) => axios.delete(`${baseUrl}${routes.suite}/${id}`).then((res) => res.data)
 };
 
+export interface UserOnboard {
+  name: string;
+  email: string;
+  contactFullName: string;
+  userId: string;
+  plan: number;
+  userEmail: string;
+  userFullName: string;
+}
+
 export const user = {
   read: (id: string) =>
     axios
       .get(`${baseUrl}${routes.user}/${id}`)
       .then((res: AxiosResponse<{ user: UserResponse }>) => res.data),
-  create: (data: User) => axios.post(`${baseUrl}${routes.user}`, data).then((res) => res.data),
+  onboard: (data: UserOnboard) =>
+    axios.post(`${baseUrl}${routes.onboardUser}`, data).then((res) => res.data),
   update: (id: string, data: User) =>
     axios.put(`${baseUrl}${routes.user}/${id}`, data).then((res) => res.data),
   delete: (id: string) => axios.delete(`${baseUrl}${routes.user}/${id}`).then((res) => res.data),

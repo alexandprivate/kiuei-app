@@ -4,6 +4,7 @@ import { TestCard } from './components/TestCard';
 import * as api from '@/api';
 import { useSession } from '@/store/useSession';
 import { useQuery } from '@tanstack/react-query';
+import { Empty } from '@/components/empty/Empty';
 
 export const Tests = () => {
   const actions = [
@@ -26,6 +27,9 @@ export const Tests = () => {
       <PageHeader title="Tests" actions={actions} />
 
       <div className="flex flex-col">
+        {data?.user.tests.length === 0 && (
+          <Empty title="Tests not found" message="Let's add some" />
+        )}
         {data?.user?.org?.tests.map((test) => (
           <Link to={`/tests/${test.id}`} key={test.id}>
             <TestCard
