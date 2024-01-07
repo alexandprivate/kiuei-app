@@ -7,13 +7,12 @@ import { useQuery } from '@tanstack/react-query';
 import { Empty } from '@/components/empty/Empty';
 
 export const Tests = () => {
+  const session = useSession((s) => s.session);
+
   const actions = [
     { name: 'Add Test', onClick: () => {}, icon: 'plus' }
   ] as PageHeaderProps['actions'];
 
-  const session = useSession((s) => s.session);
-
-  // TODO: include comments in the test for user and org under user
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
     queryFn: () => api.user.read(session?.user.id ?? ''),
