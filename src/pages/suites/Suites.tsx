@@ -35,7 +35,7 @@ export const Suites = () => {
       <div className="flex flex-col mt-12">
         {data.map((suite) => (
           <Link to={`/suites/${suite.id}`}>
-            <SuiteCard title={suite.title} url={suite.url} results={[]} />
+            <SuiteCard title={suite.title} url={suite.url} results={'[]'} />
           </Link>
         ))}
       </div>
